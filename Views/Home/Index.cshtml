@@ -1,7 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Validar";
 }
+@section Scripts{
+    <script>
+    $(document).ready(function(){
+       $( "#formtarjeta" ).submit(function( event ) {
+           event.preventDefault();
+          
+           $.get("/Home/Validar", { tarjetanum: $("#tarjetanum").val()})
+                .done(function(data){
+                 alert("Data: " + data.toString() );
+            });
+           
+       });
+    });
 
+</script>
+}
 
 <h1 class="h3 mb-3 font-weight-normal">Verifica tu tarjeta</h1>
    <span id="visa" style="font-size:5em; color:rgb(187, 187, 187)">
@@ -13,7 +28,7 @@
       <span id="americanexpress" style=" font-size:5em; color: rgb(187, 187, 187)">
            <i class="fab fa-cc-amex"></i>
       </span>
-<form asp-controller="Home" asp-action="Validar" class="form-signin">      
+<form id="formtarjeta" asp-controller="Home" asp-action="Validar" class="form-signin">      
       <div class="input-group mb-3">
          <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="far fa-credit-card"></i></span>

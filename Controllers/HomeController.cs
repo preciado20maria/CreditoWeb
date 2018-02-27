@@ -15,7 +15,7 @@ namespace CreditoWeb.Controllers
             return View();
         }
 
-        public IActionResult Validar(Tarjeta tarjeta)
+        public  IActionResult Validar(Tarjeta tarjeta)
         {
             return Ok(tarjeta);
         }
