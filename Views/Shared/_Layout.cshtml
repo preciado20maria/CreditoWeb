@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CreditoWeb</title>
+
+  
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+
+
+</head>
+<body class="text-center">
+   
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2018 - CreditoWeb</p>
+        </footer>
+    </div>
+
+   
+        <script defer src="~/lib/jquery/dist/jquery.js"></script>
+        <script defer src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script defer src="~/js/site.js" asp-append-version="true"></script>
+        <script defer src="~/js/fontawesome-all.js"></script>
+  
+   
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
