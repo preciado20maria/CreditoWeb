@@ -11,16 +11,31 @@ namespace CreditoWeb.Models
         public TipoTarjeta TipoTarjeta { get; set; }
 
         public bool Valida { get; set; }
-        public Tarjeta(string TarjetaNum)
-        {
-            this.TarjetaNum = TarjetaNum;
-            TipoTarjeta = TipoTarjeta.NOVALIDA;
-            Valida = false;
-        }
+     
         public Tarjeta()
         {
-            
+            Valida = esValida();
+            TipoTarjeta = tipoDeTarjeta();            
         }
+
+
+        /// Basado en el algoritmo de Luhn determinar si esta tarjeta es valida
+        /// como estamos dentro de la clase de tarjeta tenemos acceso a la propiedad TarjetaNum 
+        private bool esValida()
+        {
+            return false;
+        }
+
+
+        /// Si la tarjeta es valida determinar de cuál tipo es VISA, MASTERCARD, AMERICANEXPRESS
+        /// como estamos dentro de la clase de tarjeta tenemos acceso a la propiedad TarjetaNum 
+        private TipoTarjeta tipoDeTarjeta()
+        {
+            return TipoTarjeta.NOVALIDA;
+        }
+
+
+
     }
 
     public enum TipoTarjeta

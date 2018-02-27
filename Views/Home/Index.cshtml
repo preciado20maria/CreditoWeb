@@ -3,19 +3,52 @@
 }
 @section Scripts{
     <script>
+
     $(document).ready(function(){
        $( "#formtarjeta" ).submit(function( event ) {
            event.preventDefault();
-          
-           $.get("/Home/Validar", { tarjetanum: $("#tarjetanum").val()})
+           $("#correcta").css("display","none");
+           $("#incorrecta").css("display","none");
+           $.getJSON("/Home/Validar", { tarjetanum: $("#tarjetanum").val()})
                 .done(function(data){
-                 alert("Data: " + data.toString() );
+                   // alert("Data: " + JSON.stringify(data) );
+                    if(data.valida){
+                        switch(data.tipoTarjeta) {
+                                case 0:
+                                    $("#visa").css("color","#2196F3");
+                                    $("#mastercard").css("color","rgb(187, 187, 187)");
+                                    $("#americanexpress").css("color","rgb(187, 187, 187)");
+                                    break;
+                                case 1:
+                                    $("#mastercard").css("color","#2196F3");
+                                    $("#americanexpress").css("color","rgb(187, 187, 187)");
+                                    $("#visa").css("color","rgb(187, 187, 187)");
+                                    break;
+                                case 2:
+                                    $("#americanexpress").css("color","#2196F3");
+                                    $("#mastercard").css("color","rgb(187, 187, 187)");
+                                    $("#visa").css("color","rgb(187, 187, 187)");
+                                    break;
+                                default:
+                                    break;
+                        }
+                         $("#correcta").css("display","block");
+                    }
+                    else
+                    {
+                        $("#visa").css("color","rgb(187, 187, 187)");
+                        $("#mastercard").css("color","rgb(187, 187, 187)");
+                        $("#americanexpress").css("color","rgb(187, 187, 187)");
+                        $("#incorrecta").css("display","block");
+                    } 
+                 
             });
+           
            
        });
     });
-
 </script>
+
 }
 
 <h1 class="h3 mb-3 font-weight-normal">Verifica tu tarjeta</h1>
@@ -37,3 +70,14 @@
       </div>
     <button class="btn btn-lg btn-primary" type="submit">Validar</button>    
 </form>
+
+<br/>
+
+<div id="correcta" style="display: none;" class="alert alert-success fade show" role="alert">
+  La tarjeta es <strong>valida</strong> 
+ 
+</div>
+<div id="incorrecta" style="display: none;" class="alert alert-danger fade show" role="alert">
+  La tarjeta es <strong>no es valida</strong> 
+
+</div>
