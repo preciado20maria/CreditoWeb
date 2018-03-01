@@ -12,8 +12,9 @@ namespace CreditoWeb.Models
 
         public bool Valida { get; set; }
      
-        public Tarjeta()
+        public Tarjeta(string tarjetaNum)
         {
+            this.TarjetaNum = tarjetaNum;
             Valida = esValida();
             TipoTarjeta = tipoDeTarjeta();            
         }

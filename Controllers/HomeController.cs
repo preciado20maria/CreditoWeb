@@ -15,8 +15,10 @@ namespace CreditoWeb.Controllers
             return View();
         }
 
-        public IActionResult Validar(Tarjeta tarjeta)
+        public IActionResult Validar(string tarjetanum)
         {
+            /// Creamos una tarjeta 
+            Tarjeta tarjeta = new Tarjeta(tarjetanum);
             return Ok(tarjeta);
         }
 
