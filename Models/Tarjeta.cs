@@ -28,6 +28,7 @@ namespace CreditoWeb.Models
             int suma=0;
             int impar=0;
             int par=0;
+            
             for(int i=TarjetaNum.Length-1;i>=0;i-=2){
                 par=0;
                 int digito=(int)Char.GetNumericValue(TarjetaNum[i]);
